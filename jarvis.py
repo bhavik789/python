@@ -352,6 +352,16 @@ if __name__ == "__main__":
           if 'backslash' in text:
             text.replace("backslash",'\\')
           
+          if 'next line' in text:
+            text.replace("next line",'\n')
+          elif 'nextline' in text:
+            text.replace("nextline",'\n') 
+            
+          if 'next paragraph' in text:
+            text.replace("next paragraph",'\n \n \t')
+          elif 'nextparagraph' in text:
+            text.replace("nextparagraph",'\n \n \t') 
+            
           f.write(text)
   
     elif 'jarvis shut down' in query or 'jarvis shutdown' in query:
