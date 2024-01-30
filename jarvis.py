@@ -16,6 +16,11 @@ import googleapiclient as gac
 import time
 import sys
 
+# get file of imported modules for jarvis
+# pip freeze > requirements.txt
+# use this to install all files required for jarvis
+# pip install -r requirements.txt
+
 # useful for sending auto email
 mail_list = { "tushar": "gajjartushar4@gmail.com" ,"dharmesh":"sandershpatel1975@gmail.com","bhavik":"bhavik4063@gmail.com"}
 
