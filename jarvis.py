@@ -17,7 +17,7 @@ import time
 import sys
 
 # useful for sending auto email
-mail_list = { "tushar gajjar": "gajjartushar4@gmail.com" ,"dharmesh":"sandershpatel1975@gmail.com","bhavik":"bhavik4063@gmail.com"}
+mail_list = { "tushar": "gajjartushar4@gmail.com" ,"dharmesh":"sandershpatel1975@gmail.com","bhavik":"bhavik4063@gmail.com"}
 
 # creates and selects voices from your device
 engine = pyttsx3.init('sapi5')
@@ -300,8 +300,60 @@ if __name__ == "__main__":
         f.close()
         speak(f"Reminder for {title} is successfully set at {store_time}")
         
+    elif 'write' in query:  
+      if(not os.path.exists("writer")):
+        os.mkdir("writer")
+        
+      speak("what should be the name of the file sir?")
+      title = takeCommand().lower()
+      print(f"Title for your file {title}")
       
-    
+      while True:
+        if (not os.path.exists(f"writer/{title}")):
+          speak("Do you want to change name of your file sir?")
+          consent = takeCommand().lower()
+          
+          if 'yes' in consent:
+            speak("what should be the new name of the file sir?")
+            title = takeCommand().lower()
+            print(f"Title for file {title}")
+          
+          else:
+            break
+        else:
+          speak("Name Already Exists Please Select Different Name sir!")
+          title = takeCommand().lower()
+          print(f"Title for your file {title}")
+        
+      f = open(f"write/{title}.txt","w")
+      
+      while True:
+        text = takeCommand().lower()
+        if 'quit' in text:
+          break
+        else:
+          if 'fullstop' in text:
+            text.replace("fullstop",'.')
+          elif 'full stop' in text:
+            text.replace("fullstop",'.')
+            
+          if 'comma' in text:
+            text.replace("comma",',')
+          
+          if 'colon' in text:
+            text.replace("colon",':')
+            
+          if 'semicolon' in text:
+            text.replace("semicolon",';')
+          
+          if 'slash' in text:
+            text.replace("slash",'/')
+          
+          if 'backslash' in text:
+            text.replace("backslash",'\\')
+          
+          f.write(text)
+  
     elif 'jarvis shut down' in query or 'jarvis shutdown' in query:
         speak("Call on me when needed sir")
         time.sleep(0.3)
