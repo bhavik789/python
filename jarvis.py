@@ -332,6 +332,7 @@ def jarvis_functions():
           while True:
             text = takeCommand().lower()
             if 'quit' in text:
+              f.close()
               break
             else:
               if 'fullstop' in text:
